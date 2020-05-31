@@ -15,8 +15,25 @@ func initialize() {
 	}
 }
 
-func needToContinue() (uint8, bool) {
-
+func needToContinue() (string, bool) {
+	for _, v := range positions {
+		if v == [3]string{"X", "X", "X"} || v == [3]string{"O", "O", "O"} {
+			return v[0], false
+		}
+	}
+	for i := 0; i < 3; i++ {
+		if positions[0][i] == positions[1][i] && positions[0][i] == positions[2][i] {
+			return positions[0][i], false
+		}
+	}
+	switch {
+	case positions[0][0] == positions[1][1] && positions[0][0] == positions[2][2]:
+		return positions[0][0], false
+	case positions[0][2] == positions[1][1] && positions[0][2] == positions[2][0]:
+		return positions[0][2], false
+	default:
+		return "", true
+	}
 }
 
 func player1Function() {
@@ -31,7 +48,7 @@ func player1Function() {
 	fmt.Scanf("%v", &x)
 	fmt.Print("Enter the y position: ")
 	fmt.Scanf("%v", &y)
-	positions[x][y] = v
+	positions[x][y] = "X"
 }
 
 func player2Function() {
@@ -46,7 +63,7 @@ func player2Function() {
 	fmt.Scanf("%v", &x)
 	fmt.Print("Enter the y position: ")
 	fmt.Scanf("%v", &y)
-	positions[x][y] = v
+	positions[x][y] = "O"
 }
 
 func main() {
@@ -74,18 +91,18 @@ func main() {
 		player1Function()
 		if k, v := needToContinue(); v == false {
 			switch k {
-			case 1:
+			case "X":
 				fmt.Println()
-			case 2:
+			case "O":
 				fmt.Println()
 			}
 		}
 		player2Function()
 		if k, v := needToContinue(); v == false {
 			switch k {
-			case 1:
+			case "X":
 				fmt.Println()
-			case 2:
+			case "O":
 				fmt.Println()
 			}
 		}
