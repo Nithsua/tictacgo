@@ -15,7 +15,7 @@ func initialize() {
 	}
 }
 
-func player1() {
+func player1Function() {
 	var x, y int16
 	var v string
 	fmt.Print("Enter X or anything else to give up: ")
@@ -30,7 +30,7 @@ func player1() {
 	positions[x][y] = v
 }
 
-func player2() {
+func player2Function() {
 	var x, y int16
 	var v string
 	fmt.Print("Enter O or anything else to give up: ")
@@ -66,4 +66,8 @@ func main() {
 	fmt.Print("Enter the name of player 2: ")
 	fmt.Scanln(&player2)
 	fmt.Println("Game Starts")
+	for {
+		player1()
+		player2()
+	}
 }
