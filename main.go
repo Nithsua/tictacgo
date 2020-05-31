@@ -15,6 +15,10 @@ func initialize() {
 	}
 }
 
+func needToContinue() (uint8, bool) {
+
+}
+
 func player1Function() {
 	var x, y int16
 	var v string
@@ -67,7 +71,23 @@ func main() {
 	fmt.Scanln(&player2)
 	fmt.Println("Game Starts")
 	for {
-		player1()
-		player2()
+		player1Function()
+		if k, v := needToContinue(); v == false {
+			switch k {
+			case 1:
+				fmt.Println()
+			case 2:
+				fmt.Println()
+			}
+		}
+		player2Function()
+		if k, v := needToContinue(); v == false {
+			switch k {
+			case 1:
+				fmt.Println()
+			case 2:
+				fmt.Println()
+			}
+		}
 	}
 }
