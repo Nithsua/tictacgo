@@ -15,6 +15,8 @@ func initialize(){
 }
 
 func main(){
+	initialize()
+	var player1, player2 string
 	fmt.Println("Welcome to TicTacGo")
 	fmt.Println(`Board Position 
 
@@ -28,5 +30,8 @@ func main(){
 2     |     |
 
 	`)
-	fmt.Println("Game Starts")
+	fmt.Print("Enter the name of player 1: ")
+	fmt.Scanln(&player1)
+	fmt.Print("Enter the name of player 2: ")
+	fmt.Scanln(&player2)
 }
