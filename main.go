@@ -42,9 +42,15 @@ type player struct {
 
 func (p player) playerFunction() {
 	var x, y int16
-	fmt.Printf("You are %s\n", string(p.avatar))
-	fmt.Print("Enter the x and y position ")
-	fmt.Scanf("%v %v", &x, &y)
+	for {
+		fmt.Printf("You are %s\n", string(p.avatar))
+		fmt.Print("Enter the x and y position ")
+		fmt.Scanf("%v %v", &x, &y)
+		if x > 3 || y > 3 {
+			fmt.Println("x and y should be either 1 or 2 or 3\n try again")
+		}
+		break
+	}
 	positions[x][y] = p.avatar
 }
 
