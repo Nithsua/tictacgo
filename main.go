@@ -17,23 +17,23 @@ func initialize() {
 
 func needToContinue() (string, bool) {
 	for _, v := range positions {
-		fmt.Println("Loop 1")
+		// fmt.Println("Loop 1")
 		if v == [3]string{"X", "X", "X"} || v == [3]string{"O", "O", "O"} {
 			return v[0], false
 		}
 	}
 	for i := 0; i < 3; i++ {
-		fmt.Println("Loop 2")
+		// fmt.Println("Loop 2")
 		if positions[0][i] == positions[1][i] && positions[0][i] == positions[2][i] && positions[0][i] != " " {
 			return positions[0][i], false
 		}
 	}
 	switch {
 	case positions[0][0] == positions[1][1] && positions[0][0] == positions[2][2] && positions[0][0] != " ":
-		fmt.Println("Case 1")
+		// fmt.Println("Case 1")
 		return positions[0][0], false
 	case positions[0][2] == positions[1][1] && positions[0][2] == positions[2][0] && positions[0][2] != " ":
-		fmt.Println("Case 2")
+		// fmt.Println("Case 2")
 		return positions[0][2], false
 	default:
 		return "", true
