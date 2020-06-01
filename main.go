@@ -67,12 +67,12 @@ func printPosition() {
 }
 
 func main() {
-
-	initialize()
-	var player1, player2 player
-	var temp string
-	fmt.Println("Welcome to TicTacGo")
-	fmt.Println(`Board Position 
+	for {
+		initialize()
+		var player1, player2 player
+		var temp string
+		fmt.Println("Welcome to TicTacGo")
+		fmt.Println(`Board Position 
 
    0     1      2
 
@@ -85,36 +85,41 @@ func main() {
 2     |     |
 
 	`)
-	fmt.Print("Enter the name of player 1: ")
-	fmt.Scanln(&temp)
-	player1 = player{temp, "X"}
-	fmt.Print("Enter the name of player 2: ")
-	fmt.Scanln(&temp)
-	player2 = player{temp, "O"}
-	fmt.Println("Game Starts")
-	for {
-		player1.playerFunction()
-		printPosition()
-		if k, v := needToContinue(); v == false {
-			switch k {
-			case "X":
-				fmt.Printf("Congrats %s on winning\n", player1.name)
-			case "O":
-				fmt.Printf("Congrats %s on winning\n", player2.name)
+		fmt.Print("Enter the name of player 1: ")
+		fmt.Scanln(&temp)
+		player1 = player{temp, "X"}
+		fmt.Print("Enter the name of player 2: ")
+		fmt.Scanln(&temp)
+		player2 = player{temp, "O"}
+		fmt.Println("Game Starts")
+		for {
+			player1.playerFunction()
+			printPosition()
+			if k, v := needToContinue(); v == false {
+				switch k {
+				case "X":
+					fmt.Printf("Congrats %s on winning\n", player1.name)
+				case "O":
+					fmt.Printf("Congrats %s on winning\n", player2.name)
+				}
+				break
 			}
-			break
+			player2.playerFunction()
+			printPosition()
+			if k, v := needToContinue(); v == false {
+				switch k {
+				case "X":
+					fmt.Printf("Congrats %s on winning\n", player1)
+				case "O":
+					fmt.Printf("Congrats %s on winning\n", player2)
+				}
+				break
+			}
 		}
-		player2.playerFunction()
-		printPosition()
-		if k, v := needToContinue(); v == false {
-			switch k {
-			case "X":
-				fmt.Printf("Congrats %s on winning\n", player1)
-			case "O":
-				fmt.Printf("Congrats %s on winning\n", player2)
-			}
+		fmt.Print("Wanna play again(y/n): ")
+		fmt.Scanf("%s", &temp)
+		if temp == "n" || temp == "N" {
 			break
 		}
 	}
-
 }
