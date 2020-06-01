@@ -48,6 +48,7 @@ func (p player) playerFunction() {
 		fmt.Scanf("%v %v", &x, &y)
 		if x > 3 || y > 3 {
 			fmt.Println("x and y should be either 1 or 2 or 3\n try again")
+			continue
 		}
 		break
 	}
