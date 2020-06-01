@@ -17,19 +17,23 @@ func initialize() {
 
 func needToContinue() (string, bool) {
 	for _, v := range positions {
+		fmt.Println("Loop 1")
 		if v == [3]string{"X", "X", "X"} || v == [3]string{"O", "O", "O"} {
 			return v[0], false
 		}
 	}
 	for i := 0; i < 3; i++ {
-		if positions[0][i] == positions[1][i] && positions[0][i] == positions[2][i] {
+		fmt.Println("Loop 2")
+		if positions[0][i] == positions[1][i] && positions[0][i] == positions[2][i] && positions[0][i] != " " {
 			return positions[0][i], false
 		}
 	}
 	switch {
-	case positions[0][0] == positions[1][1] && positions[0][0] == positions[2][2]:
+	case positions[0][0] == positions[1][1] && positions[0][0] == positions[2][2] && positions[0][0] != " ":
+		fmt.Println("Case 1")
 		return positions[0][0], false
-	case positions[0][2] == positions[1][1] && positions[0][2] == positions[2][0]:
+	case positions[0][2] == positions[1][1] && positions[0][2] == positions[2][0] && positions[0][2] != " ":
+		fmt.Println("Case 2")
 		return positions[0][2], false
 	default:
 		return "", true
@@ -41,13 +45,15 @@ func player1Function() {
 	var v string
 	fmt.Print("Enter X or anything else to give up: ")
 	fmt.Scanln(&v)
+	fmt.Println(v)
 	if strings.Trim(v, "\n ") != "X" || strings.Trim(v, "\n ") != "x" {
-		//TODO: need to implement give up function and reference it here
+		fmt.Println("Exiting the Program") //temporary
 	}
 	fmt.Print("Enter the x position ")
 	fmt.Scanf("%v", &x)
 	fmt.Print("Enter the y position: ")
 	fmt.Scanf("%v", &y)
+	fmt.Println(x, y)
 	positions[x][y] = "X"
 }
 
@@ -57,7 +63,7 @@ func player2Function() {
 	fmt.Print("Enter O or anything else to give up: ")
 	fmt.Scanln(&v)
 	if strings.Trim(v, "\n ") != "O" || strings.Trim(v, "\n ") != "o" {
-		//TODO: need to implement give up function and reference it here
+		fmt.Println("Exiting the Program") //temporary
 	}
 	fmt.Print("Enter the x position ")
 	fmt.Scanf("%v", &x)
@@ -90,21 +96,25 @@ func main() {
 	for {
 		player1Function()
 		if k, v := needToContinue(); v == false {
+			fmt.Println("Entering if block", k, positions)
 			switch k {
 			case "X":
-				fmt.Println()
+				fmt.Printf("Congrats %s on winning", player1)
 			case "O":
-				fmt.Println()
+				fmt.Printf("Congrats %s on winning", player2)
+
 			}
+			break
 		}
 		player2Function()
 		if k, v := needToContinue(); v == false {
 			switch k {
 			case "X":
-				fmt.Println()
+				fmt.Printf("Congrats %s on winning", player1)
 			case "O":
-				fmt.Println()
+				fmt.Printf("Congrats %s on winning", player2)
 			}
+			break
 		}
 	}
 }
