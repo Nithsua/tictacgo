@@ -75,15 +75,17 @@ func player2Function() {
 func printPosition() {
 	fmt.Printf(`\nBoard Position
 
-   0     1      2
-0  %v  | %v    | %v
+   0     1    2
+
+0  %v  |  %v  | %v
  _________________
 
-1  %v  | %v    | %v
+1  %v  |  %v  | %v
  _________________
 
-2   %v  |  %v   | %v
-	`, positions[0][0], positions[0][1], positions[0][2], positions[1][0], positions[1][1], positions[1][2], positions[2][0], positions[2][1], positions[2][2])
+2  %v  |  %v  | %v
+
+`, positions[0][0], positions[0][1], positions[0][2], positions[1][0], positions[1][1], positions[1][2], positions[2][0], positions[2][1], positions[2][2])
 }
 
 func main() {
@@ -93,6 +95,7 @@ func main() {
 	fmt.Println(`Board Position 
 
    0     1      2
+   
 0     |     |
  _________________
 
@@ -113,9 +116,9 @@ func main() {
 		if k, v := needToContinue(); v == false {
 			switch k {
 			case "X":
-				fmt.Printf("Congrats %s on winning", player1)
+				fmt.Printf("Congrats %s on winning\n", player1)
 			case "O":
-				fmt.Printf("Congrats %s on winning", player2)
+				fmt.Printf("Congrats %s on winning\n", player2)
 
 			}
 			break
@@ -125,9 +128,9 @@ func main() {
 		if k, v := needToContinue(); v == false {
 			switch k {
 			case "X":
-				fmt.Printf("Congrats %s on winning", player1)
+				fmt.Printf("Congrats %s on winning\n", player1)
 			case "O":
-				fmt.Printf("Congrats %s on winning", player2)
+				fmt.Printf("Congrats %s on winning\n", player2)
 			}
 			break
 		}
