@@ -43,10 +43,8 @@ type player struct {
 func (p player) playerFunction() {
 	var x, y int16
 	fmt.Printf("You are %s\n", string(p.avatar))
-	fmt.Print("Enter the x position ")
-	fmt.Scanf("%v", &x)
-	fmt.Print("Enter the y position: ")
-	fmt.Scanf("%v", &y)
+	fmt.Print("Enter the x and y position ")
+	fmt.Scanf("%v %v", &x, &y)
 	positions[x][y] = p.avatar
 }
 
@@ -86,10 +84,10 @@ func main() {
 
 	`)
 		fmt.Print("Enter the name of player 1: ")
-		fmt.Scanln(&temp)
+		fmt.Scanf("%s", &temp)
 		player1 = player{temp, "X"}
 		fmt.Print("Enter the name of player 2: ")
-		fmt.Scanln(&temp)
+		fmt.Scanf("%s", &temp)
 		player2 = player{temp, "O"}
 		fmt.Println("Game Starts")
 		for {
